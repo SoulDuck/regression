@@ -66,7 +66,7 @@ def plot_(x , y_hat, y):
 if __debug__ == True:
     input_data , label_data=data.load_data('./data/abalone.txt')
     print lwlr(test_point=input_data[0] , x=input_data , y=label_data ,k=1)
-    #y_hat=lwlr_test(test_arr=input_data[0] , x=input_data , y=label_data[0] , k=0.01)
+    y_hat=lwlr_test(test_arr=input_data , x=input_data , y=label_data , k=0.01)
 
     """
     srt_ind=input_data[:,1].argsort(axis=0)
