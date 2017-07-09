@@ -8,7 +8,7 @@ def show_progress(i,max):
     sys.stdout.flush()
 
 def lwlr(test_point ,  x , y  , k=1.0):
-    debug_flag=True
+    debug_flag=False
     x=np.mat(x); y=np.mat(y)
     m,n=x.shape
     weights=np.mat(np.eye(m)) #
