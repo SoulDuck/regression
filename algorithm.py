@@ -8,7 +8,7 @@ def show_progress(i,max):
     sys.stdout.flush()
 
 def lwlr(test_point ,  x , y  , k=1.0):
-    debug_flag=False
+    debug_flag=True
     x=np.mat(x); y=np.mat(y)
     m,n=x.shape
     weights=np.mat(np.eye(m)) #
@@ -34,7 +34,11 @@ def lwlr(test_point ,  x , y  , k=1.0):
         print 'x.T*(weights*y.T) shape',np.shape((x.T*(weights*y.T)))
         print 'xTx.I*(x.T*(weights*y.T)) shape',np.shape( xTx.I*(x.T*(weights*y.T)))
         print 'test_point*ws shape is ',np.shape(test_point*ws)
-        print 'y',y
+        print 'y',y.shape
+        print 'y',y[0,0]
+
+    error=get_error(y[0,0],test_point*ws)
+    print error
     return test_point*ws
 
 def lwlr_test(test_arr , x ,y ,k=1.):
@@ -46,6 +50,7 @@ def lwlr_test(test_arr , x ,y ,k=1.):
         y_hat[i]=lwlr( test_arr[i] , x, y , k)
     print 'y_hat shape:',np.shape(y_hat)
     print 'error:',get_error(y,y_hat)
+    np.save('./data/abalone.npy',y_hat)
     return y_hat
 def get_error(y , y_hat):
     err = ((y_hat-y)**2).sum()
@@ -61,7 +66,8 @@ def plot_(x , y_hat, y):
 if __debug__ == True:
     input_data , label_data=data.load_data('./data/abalone.txt')
     print lwlr(test_point=input_data[0] , x=input_data , y=label_data ,k=1)
-    y_hat=lwlr_test(test_arr=input_data , x=input_data , y=label_data , k=0.01)
+    #y_hat=lwlr_test(test_arr=input_data[0] , x=input_data , y=label_data[0] , k=0.01)
+
     """
     srt_ind=input_data[:,1].argsort(axis=0)
     srt_input_data=input_data[srt_ind]
