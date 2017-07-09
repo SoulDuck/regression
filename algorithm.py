@@ -20,6 +20,7 @@ def lwlr(test_point ,  x , y  , k=1.0):
         print "this matrix is singular , cannot do inverse"
         return
     ws=xTx.I*(x.T*(weights*y.T)) # weights*y.T
+    error=get_error(y[0,0],test_point*ws)
     if __debug__==debug_flag:
         print '###debug####'
         print 'x shape is :',np.shape(x)
@@ -36,9 +37,8 @@ def lwlr(test_point ,  x , y  , k=1.0):
         print 'test_point*ws shape is ',np.shape(test_point*ws)
         print 'y',y.shape
         print 'y',y[0,0]
+        print error
 
-    error=get_error(y[0,0],test_point*ws)
-    print error
     return test_point*ws
 
 def lwlr_test(test_arr , x ,y ,k=1.):
