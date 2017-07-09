@@ -52,7 +52,7 @@ def lwlr_test(test_arr , x ,y ,k=1.):
         #print 'y_hat',y_hat[i]
         if str(y_hat[i])=='nan':
             err_count+=1
-            print 'error count:',err_count
+            print '\terror count:',err_count
 
     print 'y_hat shape:',np.shape(y_hat)
     print 'error:',get_error(y,y_hat)
