@@ -18,7 +18,6 @@ def lwlr(test_point ,  x , y  , k=1.0):
     xTx = x.T*(weights*x)
     if np.linalg.det(xTx) == 0.0:
         #print "this matrix is singular , cannot do inverse"
-        print 'a'
         return
     ws=xTx.I*(x.T*(weights*y.T)) # weights*y.T
     error=get_error(y[0,0],test_point*ws)
