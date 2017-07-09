@@ -17,7 +17,8 @@ def lwlr(test_point ,  x , y  , k=1.0):
         weights[j,j]= np.exp((diff_mat * diff_mat.T) / (-2.0 * (k ** 2)))
     xTx = x.T*(weights*x)
     if np.linalg.det(xTx) == 0.0:
-        print "this matrix is singular , cannot do inverse"
+        #print "this matrix is singular , cannot do inverse"
+        print 'a'
         return
     ws=xTx.I*(x.T*(weights*y.T)) # weights*y.T
     error=get_error(y[0,0],test_point*ws)
@@ -45,9 +46,15 @@ def lwlr_test(test_arr , x ,y ,k=1.):
 
     m = test_arr.shape[0]
     y_hat= np.zeros([m])
+    err_count=0
     for i in range(m):
         show_progress(i,m)
         y_hat[i]=lwlr( test_arr[i] , x, y , k)
+        #print 'y_hat',y_hat[i]
+        if str(y_hat[i])=='nan':
+            err_count+=1
+            print 'error count:',err_count
+
     print 'y_hat shape:',np.shape(y_hat)
     print 'error:',get_error(y,y_hat)
     np.save('./data/abalone.npy',y_hat)
