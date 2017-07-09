@@ -54,7 +54,6 @@ def lwlr_test(test_arr , x ,y ,k=1.):
     return y_hat
 def get_error(y , y_hat):
     err = ((y_hat-y)**2).sum()
-    print 'error is ',err
     return err
 def plot_(x , y_hat, y):
     fig= plt.figure()
