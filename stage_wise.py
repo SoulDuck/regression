@@ -36,9 +36,9 @@ def stagewise(x,y,eps=0.01,n_iter=100):
             for sign in [-1,1]:
                 ws_test=ws.copy()
                 ws_test[j] += eps*sign
-                print 'j:',j,'\t',ws_test.T
                 y_test = x * ws_test
                 rssE = rssError( np.asarray(y),np.asarray(y_test))
+                print 'j:',j,'\t',ws_test.T,'\t','rssE:',rssE
                 if rssE < lowest_error:
                     lowest_error = rssE
                     ws_max=ws_test
