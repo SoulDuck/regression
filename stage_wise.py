@@ -32,10 +32,11 @@ def stagewise(x,y,eps=0.01,n_iter=100):
         print '\ti:',i,' ',ws.T
         lowest_error= np.inf
         for j in range(w):
-            show_progress(j,w)
+            #show_progress(j,w)
             for sign in [-1,1]:
                 ws_test=ws.copy()
                 ws_test[j] += eps*sign
+                print 'j:',j,'\t',ws_test.T
                 y_test = x * ws_test
                 rssE = rssError( np.asarray(y),np.asarray(y_test))
                 if rssE < lowest_error:
@@ -48,6 +49,7 @@ def stagewise(x,y,eps=0.01,n_iter=100):
 
                     #print 'ws_test',ws_test.T
                     #print 'y_test shape',np.shape(y_test)
+        print '-----best ws-----'
         ws=ws_max.copy()
         return_mat[i,:] = ws.T
     return return_mat
