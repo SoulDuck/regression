@@ -16,6 +16,7 @@ def regularize(x):
     return input
 
 def stagewise(x,y,eps=0.01,n_iter=100):
+    debug_flag=True
     x=np.mat(x);y=np.mat(y)
     y_mean= np.mean(y,0)
     y_var = np.mean(y,0)
@@ -34,12 +35,18 @@ def stagewise(x,y,eps=0.01,n_iter=100):
             show_progress(j,h)
             for sign in [-1,1]:
                 ws_test=ws.copy()
-                ws_test += eps*sign
+                ws_test[j] += eps*sign
                 y_test = x * ws_test
                 rssE = rssError( np.asarray(y),np.asarray(y_test))
                 if rssE < lowest_error:
                     lowest_error = rssE
                     ws_max=ws_test
+                if __debug__ ==debug_flag:
+                    print 'lowest_error:',rssE
+                    print 'ws:',ws_max
+
+                    #print 'ws_test',ws_test.T
+                    #print 'y_test shape',np.shape(y_test)
         ws=ws_max.copy()
         return_mat[i,:] = ws.T
     return return_mat
