@@ -42,6 +42,7 @@ def stagewise(x,y,eps=0.01,n_iter=100):
                     lowest_error = rssE
                     ws_max=ws_test
                 if __debug__ ==debug_flag:
+                    """ """
                     #print 'lowest_error:',rssE
                     #print 'ws:',ws_max
 
