@@ -31,8 +31,8 @@ def stagewise(x,y,eps=0.01,n_iter=100):
 
         print 'i:',i,' ',ws.T
         lowest_error= np.inf
-        for j in range(h):
-            show_progress(j,h)
+        for j in range(w):
+            show_progress(j,w)
             for sign in [-1,1]:
                 ws_test=ws.copy()
                 ws_test[j] += eps*sign
