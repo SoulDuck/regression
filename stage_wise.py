@@ -29,7 +29,7 @@ def stagewise(x,y,eps=0.01,n_iter=100):
     return_mat=np.zeros([n_iter , w])
     for i in range(n_iter):
 
-        print 'i:',i,' ',ws.T
+        print '\ti:',i,' ',ws.T
         lowest_error= np.inf
         for j in range(w):
             show_progress(j,w)
