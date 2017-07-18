@@ -56,7 +56,9 @@ def stagewise(x,y,eps=0.01,n_iter=100):
 
 if __name__=='__main__':
     input_data , label_data=data.load_data('./data/abalone.txt')
-    stagewise(input_data , label_data )
+    best_ws=stagewise(input_data , label_data )
+    print 'best ws is :',best_ws
+
 
 
 
