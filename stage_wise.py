@@ -49,12 +49,12 @@ def stagewise(x,y,eps=0.01,n_iter=100):
 
                     #print 'ws_test',ws_test.T
                     #print 'y_test shape',np.shape(y_test)
-        print '-----best ws-----'
-        ws=ws_max.copy()
-        return_mat[i,:] = ws.T
-        print 'ws',ws.T
-        print 'return_mat',return_mat
-        print '-----------------'
+            print '-----best ws-----'
+            ws=ws_max.copy()
+            return_mat[i,:] = ws.T
+            print 'ws',ws.T
+            print 'return_mat',return_mat
+            print '-----------------'
     return return_mat
 
 
