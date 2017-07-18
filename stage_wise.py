@@ -31,7 +31,6 @@ def stagewise(x,y,eps=0.01,n_iter=100):
         print 'i:',i,' ',ws.T
         lowest_error= np.inf
         for j in range(h):
-            print j
             show_progress(j,h)
             for sign in [-1,1]:
                 ws_test=ws.copy()
