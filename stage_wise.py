@@ -1,7 +1,13 @@
+
 import numpy as np
 import data
+import os,sys
 def rssError(y, yHat):
     return ((y - yHat) ** 2).sum()
+def show_progress(i,max):
+    msg='\r progress {0}/{1}'.format(i,max)
+    sys.stdout.write(msg)
+    sys.stdout.flush()
 def regularize(x):
     input = x.copy()
     input_mean=np.mean(input,0)
@@ -21,10 +27,12 @@ def stagewise(x,y,eps=0.01,n_iter=100):
     ws_max=ws.copy()
     return_mat=np.zeros([n_iter , w])
     for i in range(n_iter):
-        print ws.T
+
+        print 'i:',i,' ',ws.T
         lowest_error= np.inf
         for j in range(h):
             print j
+            show_progress(j,h)
             for sign in [-1,1]:
                 ws_test=ws.copy()
                 ws_test += eps*sign
