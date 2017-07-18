@@ -11,10 +11,12 @@ def load_data(data_path):
     input_data=np.asarray(input_data).astype(float)
     label_data=np.asarray(label_data).astype(float)
     if __debug__==True:
+        print 'input shape', np.shape(input_data)
         print 'the number of featrue:' , n_feat
         print 'The number of data',len(input_data)
         print 'sample of input data',input_data[0:2]
 
+        print 'labels shape',np.shape(label_data)
     return input_data, label_data
 
 def reg(input , label):
